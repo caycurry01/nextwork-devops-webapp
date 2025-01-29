@@ -1,89 +1,87 @@
-# Java WebApp on AWS EC2 with GitHub Integration and CI/CD
+# Java WebApp on AWS EC2 with GitHub Integration and CI/CD  
 
-### This project demonstrates the development and deployment of a **basic Java web application** hosted on an **AWS EC2 instance**, with version control managed via **GitHub** and CI/CD pipelines for automated deployment.
----
+### This project demonstrates the development and deployment of a Java web application hosted on an AWS EC2 instance. Version control is managed via GitHub, and CI/CD automation is handled using AWS CodePipeline, CodeBuild, and CodeDeploy.
 
-## Overview
+## Overview  
 
-This project focuses on:
-1. Building a simple Java web app.
-2. Deploying the app to an **AWS EC2 instance**.
-3. Integrating **GitHub** for version control and **CI/CD** for automation.
+This project focuses on:  
+- **Building** a simple Java web application.  
+- **Deploying** the app to an AWS EC2 instance.  
+- **Integrating** GitHub for version control and AWS CI/CD for automation.  
+- **Using AWS native services** instead of GitHub Actions for deployment.  
 
-It uses a single branch workflow (`main` branch) to streamline development, with a focus on demonstrating fundamental DevOps principles.
+## Features  
+- Java-based web application with basic functionality.  
+- Hosted on an AWS EC2 instance for high availability.  
+- Continuous deployment enabled via AWS CodePipeline.  
+- Codebase managed and edited in VS Code.  
 
----
+## Technologies Used  
+- **Java**: Programming language for application development.  
+- **Apache Maven**: Build and dependency management tool.  
+- **AWS EC2**: Hosting the web app.  
+- **Git/GitHub**: For version control.  
+- **AWS CodePipeline**: Manages CI/CD automation.  
+- **AWS CodeBuild**: Builds and packages the application.  
+- **AWS CodeDeploy**: Deploys the application to EC2.  
+- **VS Code**: IDE used for development.  
 
-## Features
-- **Java-based web application** with basic functionality.
-- Hosted on an **AWS EC2 instance** for high availability.
-- Continuous deployment enabled via **GitHub Actions**.
-- Codebase managed and edited in **VS Code**.
+## Development Process  
 
----
+### 1. **Initialize Git**  
+Run the following commands to set up the repository:  
+```bash
+git init  
+git add .  
+git commit -m "Initial commit"  
+git push origin main  
+```
 
-## Technologies Used
-- **Java**: Programming language for application development.
-- **Apache Maven**: Build and dependency management tool.
-- **AWS EC2**: Hosting the web app.
-- **Git/GitHub**: For version control.
-- **GitHub Actions**: For automating CI/CD pipelines.
-- **VS Code**: IDE used for development.
+### 2. **Edit Code in VS Code**  
+Modify the Java application and commit changes.  
 
----
+### 3. **Automated Deployment via AWS CI/CD**  
+Instead of GitHub Actions, the CI/CD pipeline is handled by AWS services:  
 
-## Development Process
+- **AWS CodePipeline**: Automatically triggers on GitHub updates.  
+- **AWS CodeBuild**: Builds the project using `mvn clean package`.  
+- **AWS CodeDeploy**: Deploys the built package to an EC2 instance.  
 
-1. **Initialize Git**:
-   - Run `git init` to set up the repository and create a branch (`main`).
-   - Push the project to a new GitHub repository for version control.
+## Deployment Setup  
 
-2. **Edit in VS Code**:
-   - Make changes to the Java codebase and test locally.
+### 1. **AWS EC2 Instance Setup**  
+- Launch an EC2 instance with a Linux distribution.  
+- Install required dependencies (Java runtime, Maven, AWS CLI).  
+- Configure security groups to allow web traffic (ports 80/443).  
 
-3. **Automate Deployment**:
-   - Use GitHub Actions to trigger CI/CD pipelines for testing, building, and deploying the application whenever changes are pushed to the repository.
+### 2. **AWS CodePipeline Setup**  
+- Connect GitHub as the source repository.  
+- Configure CodeBuild to build the project.  
+- Store artifacts in an S3 bucket.  
+- Use CodeDeploy to deploy the application to EC2.  
 
----
+## Setup and Installation  
 
-## Deployment
+### Prerequisites  
+- AWS account with an EC2 instance set up.  
+- IAM role with permissions for CodePipeline, CodeBuild, and CodeDeploy.  
+- SSH key pair for accessing the EC2 instance.  
+- Git and Java Development Kit (JDK) installed.  
+- GitHub repository created.  
 
-1. **AWS EC2 Instance Setup**:
-   - Launch an EC2 instance with a Linux distribution.
-   - Install necessary tools (Java runtime, Maven, etc.).
-   - Configure security groups to allow web traffic (port 80/443).
+### Steps  
+#### Clone the repository:  
+```bash
+git clone https://github.com/your-username/repository-name.git  
+cd repository-name  
+```
+#### Make changes in VS Code  
 
-2. **CI/CD Integration**:
-   - Push changes to the GitHub repository.
-   - GitHub Actions pipeline automates:
-     - Building the Java app (`mvn clean package`).
-     - Deploying the app to the EC2 instance using SCP/SSH.
+#### Push changes to GitHub:  
+```bash
+git add .  
+git commit -m "Update application"  
+git push origin main  
+```
 
----
-
-## Setup and Installation
-
-### Prerequisites
-- AWS account with an EC2 instance set up.
-- SSH key pair for accessing the EC2 instance.
-- Git installed locally.
-- Java Development Kit (JDK) installed.
-- GitHub repository created.
-
-### Steps
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/repository-name.git
-   cd repository-name
-   ```
-
-2. Make changes to the application code in VS Code.
-
-3. Push changes to GitHub:
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git push origin main
-   ```
-
-4. Set up the GitHub Actions pipeline for automated builds and deployment.
+Once the changes are pushed, AWS CodePipeline will handle the rest, automatically building and deploying the application.
