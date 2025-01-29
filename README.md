@@ -1,6 +1,6 @@
 # Java WebApp on AWS EC2 with GitHub Integration and CI/CD
----
-This project demonstrates the development and deployment of a **basic Java web application** hosted on an **AWS EC2 instance**, with version control managed via **GitHub** and CI/CD pipelines for automated deployment.
+
+### This project demonstrates the development and deployment of a **basic Java web application** hosted on an **AWS EC2 instance**, with version control managed via **GitHub** and CI/CD pipelines for automated deployment.
 ---
 
 ## Overview
